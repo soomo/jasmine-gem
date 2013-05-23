@@ -14,6 +14,12 @@ end
 
 Jasmine.load_configuration_from_yaml
 
+jasmine_config_rb = File.join(Dir.pwd, 'spec', 'javascripts', 'support', 'jasmine_config.rb')
+if File.exist?(jasmine_config_rb)
+	require jasmine_config_rb
+	Jasmine::Config.init
+end
+
 config = Jasmine.config
 
 server = Jasmine::Server.new(config.port, Jasmine::Application.app(config))
